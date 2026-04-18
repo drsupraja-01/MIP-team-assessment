@@ -472,6 +472,10 @@ function wireAll(){
     });
   });
   
+  // Wire submit button (must use addEventListener, not onclick in innerHTML)
+  const submitBtn = document.getElementById('submit-btn');
+  if(submitBtn) submitBtn.addEventListener('click', doSubmit);
+
   // Nav highlight on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
