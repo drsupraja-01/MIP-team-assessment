@@ -527,7 +527,7 @@ function isAnswered(q){
 
 function updateProgress(){
   const done = countAnswered();
-  const total = 50;
+  const total = Object.keys(ANS[currentUnit]).length;
   document.getElementById('hdr-progress').textContent = done;
   document.getElementById('prog-bar').style.width = (done/total*100)+'%';
   
@@ -537,11 +537,11 @@ function updateProgress(){
   if(done === total && !submitted){
     btn.classList.add('ready');
     btn.disabled = false;
-    status.innerHTML = `All <strong>50 questions answered</strong>. Ready to submit.`;
+    status.innerHTML = `All <strong>${total} questions answered</strong>. Ready to submit.`;
   } else if(!submitted){
     btn.classList.remove('ready');
     btn.disabled = true;
-    status.innerHTML = `<strong>${done}</strong> of <strong>50</strong> questions answered. Complete all to submit.`;
+    status.innerHTML = `<strong>${done}</strong> of <strong>${total}</strong> questions answered. Complete all to submit.`;
   }
   
   // Update nav section done status
